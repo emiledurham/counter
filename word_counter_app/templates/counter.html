@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1>Counter</h1>
+<hr>
+{% endblock %}
+{% block content %}
+{% if data_list %}
+{% if data_list == 1 %}
+<p>There is {{ data_list }} word in this string</p>
+{% else %}
+<p>There are {{ data_list }} words in this string</p>
+{% endif %}
+{% endif %}
+<form action="{% url 'counter' %}" method="post">
+    {% csrf_token %}
+    <textarea cols="40" rows="10" name="data"></textarea>
+    </br>
+    <button type="submit" class="btn btn-success">Count</button>
+</form>
+
+{% for word, data_list in word_dict %}
+<p>{{ word }}: {{ data_list }}</p>
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1>Home</h1>
+<hr>
+{{ today }}
+ <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <span class="container">
+                Today's total: <span class="badge bg-secondary">{{ single_date_sum }}</span>
+            </span>
+        </ul>
+{% endblock %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">T1</th>
+      <th scope="col">T2</th>
+      <th scope="col">QC</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr class="display-5">
+         <th scope="row">{{ single_date_count_t1 }}</th>
+         <th scope="row">{{ single_date_count_t2 }}</th>
+         <th scope="row">{{ single_date_count_qc }}</th>
+    </tr>
+  </tbody>
+    <tr>
+        <div class="form1">
+            <form action="{% url 'add_t1' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <td><button type="submit" class="btn btn-success btn-lg" name="form1"><span class="oi oi-caret-top"></span></button>
+            </form>
+            <form action="{% url 'delete_t1' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <button type="submit" class="btn btn-danger btn-lg"><span class="oi oi-caret-bottom"></span></button></td>
+            </form>
+        </div>
+             <div class="form2">
+            <form action="{% url 'add_t2' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <td><button type="submit" class="btn btn-success btn-lg" name="form2"><span class="oi oi-caret-top"></span></button>
+            </form>
+            <form action="{% url 'delete_t2' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <button type="submit" class="btn btn-danger btn-lg" name="form3"><span class="oi oi-caret-bottom"></span></button></td>
+            </form>
+        </div>
+       <div class="form3">
+            <form action="{% url 'add_qc' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <td><button type="submit" class="btn btn-success btn-lg"><span class="oi oi-caret-top"></span></button>
+            </form>
+            <form action="{% url 'delete_qc' %}" method="post">
+        {% csrf_token %}
+                </br>
+                <button type="submit" class="btn btn-danger btn-lg"><span class="oi oi-caret-bottom"></span></button></td>
+            </form>
+        </div>
+    </tr>
+     <tr>
+        <th class="fw-light">({{ single_date_count_t1 }})</th>
+        <th class="fw-light">({{ single_date_count_t2_2 }})</th>
+        <th class="fw-light">({{ single_date_count_qc }})</th>
+    </tr>
+</table>
+{% endblock %}
+
+

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+<h1>Dashboard</h1>
+<hr>
+{% endblock %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">T1</th>
+      <th scope="col">T2</th>
+      <th scope="col">QC</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr class="display-5">
+         <th scope="row">{{ date_count_t1 }}</th>
+         <th scope="row">{{ date_count_t2 }}</th>
+         <th scope="row">{{ date_count_qc }}</th>
+    </tr>
+  </tbody>
+    <tr>
+        <th scope="row" colspan="3">{{ graph2|safe }}</th>
+    </tr>
+     <tr>
+         <th scope="row" colspan="2">{{ graph|safe }}</th>
+         <th scope="row" colspan="1">{{ graph3|safe }}</th>
+    </tr>
+</table>
+
+{% endblock %}
